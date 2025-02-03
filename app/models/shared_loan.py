@@ -10,7 +10,5 @@ class SharedLoan(Base):
     shared_with_user_id: Mapped[int] = mapped_column(ForeignKey="users.id")
 
     # Relationships
-    # load
     loan: Mapped["Loan"] = relationship("Loan", back_populates="shared_with")
-    # users that are shared with
     shared_with: Mapped["User"] = relationship("User", back_populates="shared_loans")
