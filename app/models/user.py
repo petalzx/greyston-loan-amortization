@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from app.database import Base
+from .database import Base
 
 
 class User(Base):
@@ -10,4 +10,6 @@ class User(Base):
     email: Mapped[str] = mapped_column(unique=True, index=True)
     hashed_password: Mapped[str] = mapped_column(nullable=False)
     # Optional: Implement a feature that checks if user account is active (might be on hold)
-    # loans = relationship("Loan")
+    
+    loans: Mapped[list["Loan"]] = relationship("Loan", back_populates="owner")
+    shared_loans: Mapped[list["SharedLoan"]] = relationship("SharedLoan", back_populates="shared_with") 
