@@ -11,8 +11,8 @@ class SharedLoanResponse(BaseModel):
     id: int
     loan_id: int
     shared_with_user_id: int
-    is_created: datetime
-    is_updated: datetime
+    # is_created: datetime
+    # is_updated: datetime
 
     class Config:
         from_attributes = True

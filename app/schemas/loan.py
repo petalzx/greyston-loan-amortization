@@ -2,7 +2,7 @@ from datetime import datetime, date
 from typing import Optional
 from enum import Enum
 
-from pydantic import BaseModel, NonNegativeFloat, PositiveInt
+from pydantic import BaseModel, NonNegativeFloat, PositiveInt, field_validator
 
 
 class LoanCreate(BaseModel):
@@ -10,6 +10,12 @@ class LoanCreate(BaseModel):
     annual_interest_rate: NonNegativeFloat
     term_months: PositiveInt
     # due_monthly_starting: date
+
+    @field_validator('annual_interest_rate')
+    def validate_interest_rate(cls, value):
+        if value > 100:
+            raise ValueError("Annual interest rate cannot exceed 100%")
+        return value
 
 
 class LoanResponse(BaseModel):

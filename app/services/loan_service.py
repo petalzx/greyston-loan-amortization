@@ -1,5 +1,6 @@
 from typing import List, Optional
 
+from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
 from app.models.loan import Loan
@@ -8,6 +9,11 @@ from app.utils.amortization import generate_amortization_schedule, calculate_loa
 
 
 def create_loan(db: Session, loan: LoanCreate, user_id: int) -> Loan:
+    if loan.amount <= 0:
+        raise HTTPException(status_code=400, detail="Loan amount must be greater than 0")
+    if loan.term_months <= 0:
+        raise HTTPException(status_code=400, detail="Loan term must be greater than 0")
+
     db_loan = Loan(user_id=user_id, **loan.model_dump())
     db.add(db_loan)
     db.commit()
