@@ -19,8 +19,6 @@ Base.metadata.create_all(bind=engine)
 app.include_router(api_router, prefix="/api")
 
 # Root endpoint
-
-
 @app.get("/")
 def read_root():
     return {"message": "Welcome to the Loan Amortization API"}
