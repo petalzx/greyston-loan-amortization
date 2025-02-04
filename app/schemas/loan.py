@@ -18,6 +18,9 @@ class LoanResponse(BaseModel):
     annual_interst_rate: float
     term_months: PositiveInt
     due_monthly_starting: date
+    is_created: datetime
+    is_updated: datetime
+    
     # Not really sure how the owner_id should be implemented atp
     owner_id: int
 
