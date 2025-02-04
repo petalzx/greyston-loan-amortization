@@ -7,8 +7,8 @@ class SharedLoan(Base):
     __tablename__ = "shared_loans"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    loan_id: Mapped[int] = mapped_column(ForeignKey="loans.id")
-    shared_with_user_id: Mapped[int] = mapped_column(ForeignKey="users.id")
+    loan_id: Mapped[int] = mapped_column(ForeignKey("loans.id"))
+    shared_with_user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
 
     # Relationships
     loan: Mapped["Loan"] = relationship("Loan", back_populates="shared_with")

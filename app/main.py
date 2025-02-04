@@ -1,7 +1,21 @@
 from fastapi import FastAPI
+from app.api import router as api_router
+from app.session import SessionLocal
 
-app = FastAPI()
+app = FastAPI(
+    title="Loan Amortization API",
+    description="An API for managing users, loans, and shared loans, with functionality to see amortization schedules.",
+    version="1.0.0"
+)
 
+# Include API routers
+app.include_router(api_router, prefix="/api")
+
+# Root endpoint
 @app.get("/")
-async def root():
-    return {"message": "Hi"}
+def read_root():
+    return {"message": "Welcome to the Loan Amortization API"}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

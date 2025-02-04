@@ -9,7 +9,7 @@ class LoanCreate(BaseModel):
     amount: NonNegativeFloat
     annual_interst_rate: NonNegativeFloat
     term_months: PositiveInt
-    due_monthly_starting: date
+    # due_monthly_starting: date
 
 
 class LoanResponse(BaseModel):
@@ -25,7 +25,7 @@ class LoanResponse(BaseModel):
     owner_id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class LoanScheduleItem(BaseModel):

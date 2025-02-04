@@ -9,12 +9,12 @@ from app.schemas.user import UserCreate
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
-def get_by_email(self, db: Session, *, email: str) -> Optional[User]:
+def get_by_email(db: Session, *, email: str) -> Optional[User]:
     # .first() or .one_or_none
     return db.query(User).filter(User.email == email).one_or_none()
 
 
-def create_user(self, db: Session, user: UserCreate) -> User:
+def create_user(db: Session, user: UserCreate) -> User:
 
     hashed_password = pwd_context.hash(user.password)
     db_user = User(username=user.name, email=user.email,

@@ -1,12 +1,9 @@
 import datetime
 
 from sqlalchemy import DateTime
-from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy.ext.declarative import as_declarative
+from sqlalchemy.orm import Mapped, mapped_column, DeclarativeBase
 
-
-@as_declarative
-class Base:
+class Base(DeclarativeBase):
     is_created: Mapped[datetime.datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, default=datetime.datetime.now
     )
