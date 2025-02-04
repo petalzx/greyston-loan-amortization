@@ -31,9 +31,6 @@ def get_loan_summary(db: Session, loan_id: int, month: int) -> Optional[LoanMont
     if not loan:
         return None
 
-    schedule = generate_amortization_schedule(
-        loan.amount, loan.annual_interest_rate, loan.term_months
-    )
-
-    summary = calculate_loan_summary(schedule, loan.amount, month)
+    summary = calculate_loan_summary(
+        loan.amount, loan.annual_interest_rate, loan.term_months, month)
     return LoanMonthSummary(**summary)
