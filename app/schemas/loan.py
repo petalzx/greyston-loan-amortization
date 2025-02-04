@@ -7,7 +7,7 @@ from pydantic import BaseModel, NonNegativeFloat, PositiveInt
 
 class LoanCreate(BaseModel):
     amount: NonNegativeFloat
-    annual_interst_rate: float
+    annual_interst_rate: NonNegativeFloat
     term_months: PositiveInt
     due_monthly_starting: date
 
@@ -15,7 +15,7 @@ class LoanCreate(BaseModel):
 class LoanResponse(BaseModel):
     id: str
     amount: NonNegativeFloat
-    annual_interst_rate: float
+    annual_interst_rate: NonNegativeFloat
     term_months: PositiveInt
     due_monthly_starting: date
     is_created: datetime

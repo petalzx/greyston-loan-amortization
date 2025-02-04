@@ -8,8 +8,6 @@ from app.schemas.user import UserCreate
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-#
-
 
 def get_by_email(self, db: Session, *, email: str) -> Optional[User]:
     # .first() or .one_or_none
