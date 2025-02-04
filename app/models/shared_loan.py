@@ -2,6 +2,7 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from .database import Base
 
+
 class SharedLoan(Base):
     __tablename__ = "shared_loans"
 
@@ -11,4 +12,5 @@ class SharedLoan(Base):
 
     # Relationships
     loan: Mapped["Loan"] = relationship("Loan", back_populates="shared_with")
-    shared_with: Mapped["User"] = relationship("User", back_populates="shared_loans")
+    shared_with: Mapped["User"] = relationship(
+        "User", back_populates="shared_loans")
