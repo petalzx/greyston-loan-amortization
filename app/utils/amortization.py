@@ -40,7 +40,7 @@ def calculate_loan_summary(schedule: List[Dict], amount: float, month: int) -> D
     # Total principal paid
     total_principal_paid = amount - partial_schedule[-1]["remaining_balance"]
 
-    # Total interest paid
+    # Total interest paid (curently doesn't work)
     total_interest_paid = sum(
         item["monthly_payment"] - (partial_schedule[i - 1]
                                    ["remaining_balance"] - item["remaining_balance"])

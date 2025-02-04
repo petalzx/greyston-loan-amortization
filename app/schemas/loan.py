@@ -18,8 +18,8 @@ class LoanResponse(BaseModel):
     annual_interest_rate: NonNegativeFloat
     term_months: PositiveInt
     due_monthly_starting: date
-    is_created: datetime
-    is_updated: datetime
+    # is_created: datetime
+    # is_updated: datetime
     
     # Not really sure how the owner_id should be implemented atp
     owner_id: int
@@ -40,6 +40,6 @@ class LoanStatus(Enum):
 class LoanMonthSummary(BaseModel):
     month: PositiveInt
     current_principal_balance: NonNegativeFloat
-    principal_paid: NonNegativeFloat
-    interest_paid: NonNegativeFloat
+    total_principal_paid: NonNegativeFloat
+    total_interest_paid: NonNegativeFloat
     status: LoanStatus

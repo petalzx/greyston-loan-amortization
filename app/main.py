@@ -11,6 +11,8 @@ app = FastAPI(
     version="1.0.0"
 )
 
+Base.metadata.create_all(bind=engine)
+
 # Include API routers
 app.include_router(api_router, prefix="/api")
 
