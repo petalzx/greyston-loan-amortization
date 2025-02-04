@@ -6,8 +6,11 @@ def generate_amortization_schedule(amount: float, annual_interest_rate: float, t
     monthly_interest_rate = annual_interest_rate / 12 / 100
 
     # Fromula: M = P [ i(1 + i)^n ] / [ (1 + i)^n – 1]
-    monthly_payment = amount * (monthly_interest_rate * (1 + monthly_interest_rate)
-                                ** term_months) / ((1 + monthly_interest_rate) ** term_months - 1)
+    monthly_payment = (
+        amount
+        * (monthly_interest_rate * (1 + monthly_interest_rate) ** term_months)
+        / ((1 + monthly_interest_rate) ** term_months - 1)
+    )
 
     amortization_schedule = []
     remaining_balance = amount

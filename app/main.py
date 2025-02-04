@@ -2,6 +2,9 @@ from fastapi import FastAPI
 from app.api import router as api_router
 from app.session import SessionLocal
 
+from app.models.database import Base
+from app.session import engine
+
 app = FastAPI(
     title="Loan Amortization API",
     description="An API for managing users, loans, and shared loans, with functionality to see amortization schedules.",

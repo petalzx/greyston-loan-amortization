@@ -8,7 +8,7 @@ from app.utils.amortization import generate_amortization_schedule, calculate_loa
 
 
 def create_loan(db: Session, loan: LoanCreate, user_id: int) -> Loan:
-    db_loan = Loan(**loan.model_dump, user_id=user_id)
+    db_loan = Loan(**loan.model_dump(), user_id=user_id)
     db.add(db_loan)
     db.commit()
     db.refresh()

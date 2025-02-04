@@ -17,7 +17,7 @@ def get_by_email(db: Session, *, email: str) -> Optional[User]:
 def create_user(db: Session, user: UserCreate) -> User:
 
     hashed_password = pwd_context.hash(user.password)
-    db_user = User(username=user.name, email=user.email,
+    db_user = User(username=user.username, email=user.email,
                    hashed_password=hashed_password)
 
     db.add(db_user)
