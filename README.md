@@ -17,8 +17,8 @@ A FastAPI-based REST API for managing users, loans, and shared loans with amorti
 
 1. **Clone Repository**
    ```bash
-   git clone https://github.com/your-repo/loan-amortization.git
-   cd loan-amortization
+   git clone https://git@github.com:your-username/loan-amortization-api.git
+   cd loan-amortization-api
 2. **Set Up Virtual Environment**
    ```bash
    python -m venv venv
@@ -56,5 +56,5 @@ Access the API at:
 - `GET /api/endpoints/loans/{loan_id}/summary?month=6` - Fetch loan summary.
 
 ### Shared Loans
-- `POST /api/v1/shared-loans/` - Share a loan.
+- `POST /api/endpoints/shared-loans/` - Share a loan.
    
